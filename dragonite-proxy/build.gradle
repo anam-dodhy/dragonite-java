@@ -1,0 +1,44 @@
+/*
+ * The Dragonite Project
+ * -------------------------
+ * See the LICENSE file in the root directory for license information.
+ */
+
+
+
+plugins {
+    id 'de.fuerstenau.buildconfig' version '1.1.8'
+}
+
+group 'com.vecsight.dragonite'
+version '0.4.0'
+
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.8
+
+mainClassName = 'com.vecsight.dragonite.proxy.CLIMain'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+applicationDistribution.from("samples") {
+    into "samples"
+}
+
+dependencies {
+    compile project(':dragonite-sdk')
+    compile project(':dragonite-mux')
+    compile project(':dragonite-utils')
+    compile group: 'org.tinylog', name: 'tinylog', version: '1.2'
+    compile group: 'commons-cli', name: 'commons-cli', version: '1.4'
+    compile 'com.eclipsesource.minimal-json:minimal-json:0.9.4'
+}
+
+buildConfig {
+    clsName = 'ProxyBuildConfig'
+}

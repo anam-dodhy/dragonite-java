@@ -1,0 +1,34 @@
+/*
+ * The Dragonite Project
+ * -------------------------
+ * See the LICENSE file in the root directory for license information.
+ */
+
+
+
+plugins {
+    id 'de.fuerstenau.buildconfig' version '1.1.8'
+}
+
+group 'com.vecsight.dragonite'
+version '0.3.4'
+
+apply plugin: 'java-library'
+apply plugin: 'java-library-distribution'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.8
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile project(':dragonite-utils')
+    compile 'com.github:bucket4j:1.3.0'
+    testCompile 'junit:junit:4.12'
+}
+
+buildConfig {
+    clsName = 'DragoniteBuildConfig'
+}
